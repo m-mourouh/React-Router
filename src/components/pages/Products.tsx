@@ -5,8 +5,12 @@ const Products = () => {
     <div>
       <input type="text" placeholder='Search products' />
         <p className='products-menu'>
-        <Link to="featured">Featured</Link>
-        <Link to="new">New</Link>
+        {/* Relative links */}
+        <Link to="/featured">Featured</Link>
+        <Link to="/new">New</Link>
+        {/* Absolute links */}
+        {/* <Link to="/featured">Featured</Link>
+        <Link to="/new">New</Link> */}
         </p>
         <Outlet/>
     </div>
@@ -14,3 +18,9 @@ const Products = () => {
 }
 
 export default Products
+
+/* 
+Relative links or paths :  do not start with "/" and will inherit the closest route in which they are rendered
+Absolute Links or paths : starts with "/" and they begin from root/.. 
+
+*/

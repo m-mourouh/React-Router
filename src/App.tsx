@@ -1,5 +1,7 @@
-import About from "./components/pages/About"
+import React, { Suspense } from "react"
+
 import Home from "./components/pages/Home"
+// import About from "./components/pages/About"
 import {Routes, Route} from "react-router-dom" 
 import NavBar from "./components/NavBar"
 import OrderSummary from "./components/pages/OrderSummary"
@@ -12,13 +14,21 @@ import UserDetails from "./components/pages/UserDetails"
 import Admin from "./components/pages/Admin"
 
 
+// Code splitting - Lazy loading 
+const LazyAbout = React.lazy(() => import("./components/pages/About")) ;
+
+
 function App() {
   return (
     <div className="App">
       <NavBar/>
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="about" element={<About/>} />
+        <Route path="about" element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <LazyAbout/>
+          </Suspense>
+        } />
         <Route path="order-summary" element={<OrderSummary/>} />
         <Route path="products" element={<Products/>}>
           {/* Index Route */}
