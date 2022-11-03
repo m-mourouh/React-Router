@@ -4,6 +4,9 @@ import {Routes, Route} from "react-router-dom"
 import NavBar from "./components/NavBar"
 import OrderSummary from "./components/pages/OrderSummary"
 import NoMatch from "./components/pages/NoMatch"
+import Products from "./components/pages/Products"
+import FeaturedProducts from "./components/pages/FeaturedProducts"
+import NewProducts from "./components/pages/NewProducts"
 
 
 function App() {
@@ -12,8 +15,12 @@ function App() {
       <NavBar/>
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="/about" element={<About/>} />
-        <Route path="/order-summary" element={<OrderSummary/>} />
+        <Route path="about" element={<About/>} />
+        <Route path="order-summary" element={<OrderSummary/>} />
+        <Route path="products" element={<Products/>}>
+          <Route path="featured"  element={<FeaturedProducts/>}/>
+          <Route path="new"  element={<NewProducts/>}/>
+        </Route>
         <Route path="*" element={<NoMatch/>} />
       </Routes>
     </div>
