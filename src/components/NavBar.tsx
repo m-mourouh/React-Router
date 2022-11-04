@@ -1,6 +1,9 @@
 import React from 'react'
 import { Link, NavLink } from "react-router-dom"
+import { useAuth } from '../contexts/AuthContext'
 const NavBar = () => {
+    const auth = useAuth();
+
     const navLinkStyle = ({ isActive }: {isActive: boolean}) => {
         return {
             color: isActive  ? "darkorange"  : undefined
@@ -17,6 +20,13 @@ const NavBar = () => {
         <li><NavLink style={navLinkStyle} to="about">About</NavLink></li>
         <li><NavLink style={navLinkStyle} to="products">Products</NavLink></li>
         <li><NavLink style={navLinkStyle} to="users">Users</NavLink></li>
+        <li><NavLink style={navLinkStyle} to="profile">Profile</NavLink></li> 
+        {
+          !auth.user && <li><NavLink style={navLinkStyle} to="login">Login</NavLink></li>
+        }
+      
+        
+
       </ul>
     </nav>
   )
